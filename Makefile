@@ -10,39 +10,20 @@
 #                                                                              #
 # **************************************************************************** #
 
-STATIC_EXE	= ft_ls
-DEBUG_EXE	= ft_ls_debug
+STATIC_EXE	= push_swap
+DEBUG_EXE	= push_swap_debug
 
-SRC		=	main.c				\
-			ft_get_opt.c		\
-			file_name_cmp.c		\
-			file_r_name_cmp.c	\
-			file_size_cmp.c		\
-			file_r_size_cmp.c	\
-			ls_l.c				\
-			print1.c			\
-			print2.c			\
-			tab1.c				\
-			tab2.c				\
-			to_wedge.c
+SRC		=	main.c
 
 UNAME_S := $(shell uname -s)
 
 ifeq ($(UNAME_S),Linux)
 
-SRC	+= 							\
-		file_r_time_cmp_linux.c	\
-		file_time_cmp_linux.c	\
-		printacl_linux.c		\
-		print_date_linux.c
+SRC	+= 	
 
 endif
 ifeq ($(UNAME_S),Darwin)
-SRC	+=							\
-		file_r_time_cmp_macos.c	\
-		file_time_cmp_macos.c	\
-		printacl_macos.c		\
-		print_date_macos.c
+SRC	+=	
 endif
 
 STATIC_OBJ	= $(patsubst %.c,$(STATIC_DIR)/%.o,$(SRC))
