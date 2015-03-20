@@ -16,22 +16,30 @@ void	do_pa(t_stacks *stacks)
 {
 	t_list	*tmp;
 
-	tmp = stacks->sb;
-	stacks->sb = stacks->sb->next;
-	tmp->next = stacks->sa;
-	stacks->sa = tmp;
-	stacks->nb_sa++;
-	stacks->nb_sb--;
+	if (stacks->nb_sb > 0)
+	{
+		tmp = stacks->sb;
+		stacks->sb = stacks->sb->next;
+		tmp->next = stacks->sa;
+		stacks->sa = tmp;
+		stacks->nb_sa++;
+		stacks->nb_sb--;
+		}
+	printf("PA\n");
 }
 
 void	do_pb(t_stacks *stacks)
 {
 	t_list	*tmp;
 
-	tmp = stacks->sa;
-	stacks->sa = stacks->sa->next;
-	tmp->next = stacks->sb;
-	stacks->sb = tmp;
-	stacks->nb_sa--;
-	stacks->nb_sb++;
+	if (stacks->nb_sa > 0)
+	{
+		tmp = stacks->sa;
+		stacks->sa = stacks->sa->next;
+		tmp->next = stacks->sb;
+		stacks->sb = tmp;
+		stacks->nb_sa--;
+		stacks->nb_sb++;
+	}
+	printf("PB\n");
 }

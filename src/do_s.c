@@ -36,6 +36,7 @@ void	do_sa(t_stacks *stacks)
 		tmp1->next = stacks->sa;
 		stacks->sa = tmp1;
 	}
+	printf("SA\n");
 }
 
 void	do_sb(t_stacks *stacks)
@@ -61,6 +62,7 @@ void	do_sb(t_stacks *stacks)
 		tmp1->next = stacks->sb;
 		stacks->sb = tmp1;
 	}
+	printf("SB\n");
 }
 
 void	do_ss(t_stacks *stacks)

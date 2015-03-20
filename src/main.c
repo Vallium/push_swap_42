@@ -37,53 +37,39 @@ void	print_stacks(t_stacks *st)
 	printf(" NULL\n\n");
 }
 
-int		main()
+int		main(int argc, char **argv)
 {
-	int data1 = 1;
-	int data2 = 2;
-	int data3 = 3;
-	int data4 = 4;
-	int data5 = 5;
+	int nb;
+	t_stacks	all;
 
-	t_list	elem1;
-	t_list	elem2;
-	t_list	elem3;
-	t_list	elem4;
-	t_list	elem5;
+	all.sa = NULL;
+	all.sb = NULL;
+	all.nb_sa = 0;
+	all.nb_sb = 0;
+	while (all.nb_sa + 1 < argc)
+	{
+		nb = ft_atoi(argv[(all.nb_sa++) + 1]);
+		ft_lstsmartpushback(&all.sa, ft_lstnew(&nb, sizeof(int)));
+	}
 
-	elem1.next = &elem2;
-	elem2.next = &elem3;
-	elem3.next = &elem4;
-	elem4.next = &elem5;
-	elem5.next = 0;
-
-	elem1.content = &data1;
-	elem2.content = &data2;
-	elem3.content = &data3;
-	elem4.content = &data4;
-	elem5.content = &data5;
-
-	t_stacks test;
-
-	test.nb_sa = 5;
-	test.nb_sb = 0;
-
-	test.sa = &elem1;
-	test.sb = 0;
-
-	print_stacks(&test);
-
-//	do_sa(&test);
-	do_pb(&test);
-	do_pb(&test);
-	do_pb(&test);
-//	do_sa(&test);
-//	do_pa(&test);
-//	do_pa(&test);
-	print_stacks(&test);
-	do_rrr(&test);
-	//	do_rr(&test);
-
-	print_stacks(&test);
+	print_stacks(&all);
+	do_sa(&all);
+	print_stacks(&all);
+	do_pb(&all);
+	print_stacks(&all);
+	do_pb(&all);
+	print_stacks(&all);
+	do_pb(&all);
+	print_stacks(&all);
+	do_sa(&all);
+	print_stacks(&all);
+	do_pa(&all);
+	print_stacks(&all);
+	do_pa(&all);
+	print_stacks(&all);
+	do_rrr(&all);
+	print_stacks(&all);
+	do_rr(&all);
+	print_stacks(&all);
 	return (0);
 }
