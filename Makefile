@@ -13,7 +13,11 @@
 STATIC_EXE	= push_swap
 DEBUG_EXE	= push_swap_debug
 
-SRC		=	main.c
+SRC		=	main.c		\
+			do_s.c		\
+			do_p.c		\
+			do_r.c		\
+			do_rr.c
 
 UNAME_S := $(shell uname -s)
 
