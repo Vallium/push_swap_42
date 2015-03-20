@@ -25,6 +25,7 @@ void	do_rra(t_stacks *stacks)
 		stacks->sa = tmp->next;
 		tmp->next = 0;
 	}
+	printf("RRA\n");
 }
 
 void	do_rrb(t_stacks *stacks)
@@ -40,6 +41,7 @@ void	do_rrb(t_stacks *stacks)
 		stacks->sb = tmp->next;
 		tmp->next = 0;
 	}
+	printf("RRB\n");
 }
 
 void	do_rrr(t_stacks *stacks)

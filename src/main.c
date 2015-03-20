@@ -51,25 +51,41 @@ int		main(int argc, char **argv)
 		nb = ft_atoi(argv[(all.nb_sa++) + 1]);
 		ft_lstsmartpushback(&all.sa, ft_lstnew(&nb, sizeof(int)));
 	}
+	do_pb(&all);
+	do_pb(&all);
+	do_pb(&all);
+	do_pb(&all);
+	print_stacks(&all);
 
-	print_stacks(&all);
 	do_sa(&all);
 	print_stacks(&all);
-	do_pb(&all);
+
+	do_sb(&all);
 	print_stacks(&all);
-	do_pb(&all);
-	print_stacks(&all);
-	do_pb(&all);
-	print_stacks(&all);
-	do_sa(&all);
-	print_stacks(&all);
+
 	do_pa(&all);
 	print_stacks(&all);
-	do_pa(&all);
+
+	do_pb(&all);
 	print_stacks(&all);
+
+	do_ra(&all);
+	print_stacks(&all);
+
+	do_rb(&all);
+	print_stacks(&all);
+
+	do_rra(&all);
+	print_stacks(&all);
+
+	do_rrb(&all);
+	print_stacks(&all);
+
 	do_rrr(&all);
 	print_stacks(&all);
-	do_rr(&all);
+
+	do_ss(&all);
 	print_stacks(&all);
+
 	return (0);
 }
