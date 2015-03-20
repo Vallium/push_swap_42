@@ -31,6 +31,13 @@ void	do_sa(t_stacks *stacks)
 		tmp2->next = tmp1;
 		tmp1->next = tmp3;
 	}
+	else if (stacks->nb_sa == 2)
+	{
+		tmp1 = stacks->sa->next;
+		stacks->sa->next = 0;
+		tmp1->next = stacks->sa;
+		stacks->sa = tmp1;
+	}
 }
 
 void	do_sb(t_stacks *stacks)
@@ -50,6 +57,13 @@ void	do_sb(t_stacks *stacks)
 		tmp2->next = tmp1;
 		tmp1->next = tmp3;
 	}
+	else if (stacks->nb_sb == 2)
+	{
+		tmp1 = stacks->sb->next;
+		stacks->sb->next = 0;
+		tmp1->next = stacks->sb;
+		stacks->sb = tmp1;
+	}
 }
 
 void	do_pa(t_stacks *stacks)
@@ -60,6 +74,8 @@ void	do_pa(t_stacks *stacks)
 	stacks->sb = stacks->sb->next;
 	tmp->next = stacks->sa;
 	stacks->sa = tmp;
+	stacks->nb_sa++;
+	stacks->nb_sb--;
 }
 
 void	do_pb(t_stacks *stacks)
@@ -70,6 +86,8 @@ void	do_pb(t_stacks *stacks)
 	stacks->sa = stacks->sa->next;
 	tmp->next = stacks->sb;
 	stacks->sb = tmp;
+	stacks->nb_sa--;
+	stacks->nb_sb++;
 }
 
 /*
@@ -97,7 +115,7 @@ void	print_stacks(t_stacks *st)
 	t_list *tmp;
 
 	tmp = st->sa;
-	printf("Pile A : ");
+	printf("Pile A (%d elems): ", st->nb_sa);
 	while (tmp)
 	{
 		printf(" %d ->",*((int *)tmp->content));
@@ -106,7 +124,7 @@ void	print_stacks(t_stacks *st)
 	printf(" NULL\n");
 
 	tmp = st->sb;
-	printf("Pile B : ");
+	printf("Pile B (%d elems): ", st->nb_sb);
 	while (tmp)
 	{
 		printf(" %d ->",*((int *)tmp->content));
@@ -153,12 +171,15 @@ int		main()
 
 //	do_sa(&test);
 	do_pb(&test);
+
+	print_stacks(&test);
 	do_pb(&test);
-	do_sb(&test);
-	do_pa(&test);
-	do_pa(&test);
-
-
+	print_stacks(&test);
+	do_pb(&test);
+	print_stacks(&test);
+	do_sa(&test);
+//	do_pa(&test);
+//	do_pa(&test);
 
 	print_stacks(&test);
 	return (0);
