@@ -8,6 +8,6 @@ install:
 script:
   - make -j
   - echo "Pile vide"
-  - ./ft_pushswap
+  - ./push_swap
   - echo "Pile remplie"
-  - ./ft_pushswap 1 2 3 4 5 6 7 8
+  - ./push_swap 1 2 3 4 5 6 7 8
