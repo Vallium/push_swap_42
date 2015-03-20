@@ -153,6 +153,12 @@ int		main()
 
 //	do_sa(&test);
 	do_pb(&test);
+	do_pb(&test);
+	do_sb(&test);
+	do_pa(&test);
+	do_pa(&test);
+
+
 
 	print_stacks(&test);
 	return (0);
