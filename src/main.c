@@ -12,6 +12,29 @@
 
 #include "push_swap.h"
 
+void	do_sa(t_stacks *stacks)
+{
+	(void)stacks;
+}
+
+void	do_rrr(t_stacks *stacks)
+{
+	do_rra(stacks);
+	do_rrb(stacks);
+}
+
+void	do_rr(t_stacks *stacks)
+{
+	do_ra(stacks);
+	do_rb(stacks);
+}
+
+void	do_ss(t_stacks *stacks)
+{
+	do_sa(stacks);
+	do_sb(stacks);
+}
+
 int		main()
 {
 	ft_putstr("Init Push_swap!\n");

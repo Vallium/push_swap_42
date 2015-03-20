@@ -15,4 +15,22 @@
 
 # include "libft.h"
 
+typedef struct	s_stacks
+{
+	t_list		*s1;
+	t_list		*s2;
+}				t_stacks;
+
+void			do_sa(t_stacks *stacks);
+void			do_sb(t_stacks *stacks);
+void			do_pa(t_stacks *stacks);
+void			do_pb(t_stacks *stacks);
+void			do_ra(t_stacks *stacks);
+void			do_rb(t_stacks *stacks);
+void			do_rra(t_stacks *stacks);
+void			do_rrb(t_stacks *stacks);
+void			do_ss(t_stacks *stacks);
+void			do_rr(t_stacks *stacks);
+void			do_rrr(t_stacks *stacks);
+
 #endif
