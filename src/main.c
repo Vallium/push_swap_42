@@ -90,7 +90,70 @@ void	do_pb(t_stacks *stacks)
 	stacks->nb_sb++;
 }
 
-/*
+void	do_ra(t_stacks *stacks)
+{
+	t_list	*tmp;
+	t_list	*tmp2;
+
+	if (stacks->nb_sa > 1)
+	{
+		tmp = stacks->sa;
+		tmp2 = stacks->sa;
+		stacks->sa = stacks->sa->next;
+		while(tmp2->next)
+			tmp2 = tmp2->next;
+		tmp2->next = tmp;
+		tmp->next = 0;
+	}
+}
+
+void	do_rb(t_stacks *stacks)
+{
+	t_list	*tmp;
+	t_list	*tmp2;
+
+	if (stacks->nb_sb > 1)
+	{
+		tmp = stacks->sb;
+		tmp2 = stacks->sb;
+		stacks->sb = stacks->sb->next;
+		while(tmp2->next)
+			tmp2 = tmp2->next;
+		tmp2->next = tmp;
+		tmp->next = 0;
+	}
+}
+
+void	do_rra(t_stacks *stacks)
+{
+	t_list		*tmp;
+
+	if (stacks->nb_sa > 1)
+	{
+		tmp = stacks->sa;
+		while (tmp->next->next)
+			tmp = tmp->next;
+		tmp->next->next = stacks->sa;
+		stacks->sa = tmp->next;
+		tmp->next = 0;
+	}
+}
+
+void	do_rrb(t_stacks *stacks)
+{
+	t_list		*tmp;
+
+	if (stacks->nb_sb > 1)
+	{
+		tmp = stacks->sb;
+		while (tmp->next->next)
+			tmp = tmp->next;
+		tmp->next->next = stacks->sb;
+		stacks->sb = tmp->next;
+		tmp->next = 0;
+	}
+}
+
 void	do_rrr(t_stacks *stacks)
 {
 	do_rra(stacks);
@@ -102,7 +165,7 @@ void	do_rr(t_stacks *stacks)
 	do_ra(stacks);
 	do_rb(stacks);
 }
-*/
+
 
 void	do_ss(t_stacks *stacks)
 {
@@ -171,15 +234,14 @@ int		main()
 
 //	do_sa(&test);
 	do_pb(&test);
-
-	print_stacks(&test);
 	do_pb(&test);
-	print_stacks(&test);
 	do_pb(&test);
-	print_stacks(&test);
-	do_sa(&test);
+//	do_sa(&test);
 //	do_pa(&test);
 //	do_pa(&test);
+	print_stacks(&test);
+	do_rrr(&test);
+	//	do_rr(&test);
 
 	print_stacks(&test);
 	return (0);
