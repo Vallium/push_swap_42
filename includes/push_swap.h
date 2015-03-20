@@ -17,8 +17,16 @@
 
 typedef struct	s_stacks
 {
-	t_list		*s1;
-	t_list		*s2;
+	t_list		*sa;
+	t_list		*bl_sa;		//before last
+	t_list		*l_sa;		//last
+	size_t		nb_sa;		//nb d'elements
+
+	t_list		*sb;
+	t_list		*bl_sb;		//before last
+	t_list		*l_sb;		//last
+	size_t		nb_sb;		//nb d'elements
+
 }				t_stacks;
 
 void			do_sa(t_stacks *stacks);

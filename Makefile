@@ -38,7 +38,7 @@ LIBFT_DEBUG	= libft/libft_debug.a
 LIBFT_HEAD	= libft/includes/
 
 CC			= gcc
-FLAGS		= -Wall -Wextra -Werror
+FLAGS		= -Wall -Wextra #-Werror
 NORMINETTE	= ~/project/colorminette/colorminette
 
 $(shell mkdir -p $(STATIC_DIR) $(DEBUG_DIR))
