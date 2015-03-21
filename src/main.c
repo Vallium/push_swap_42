@@ -14,6 +14,27 @@
 
 #include <stdio.h>
 
+int		is_sort(t_stacks *stacks)
+{
+	t_list	*tmp;
+	int		i;
+	if (stacks->nb_sa > 1)
+	{
+		tmp = stacks->sa;
+		i = *(int *)tmp->content;
+		tmp = tmp->next;
+		while (tmp)
+		{
+			if (i > *(int *)tmp->content)
+				return (0);
+			i = *(int *)tmp->content;
+			tmp = tmp->next;
+		}
+	}
+	return (1);
+}
+
+
 void	print_stacks(t_stacks *st)
 {
 	t_list *tmp;
@@ -66,7 +87,8 @@ int		main(int argc, char **argv)
 	}
 	//print_stacks(&all);
 
-	trie(&all);
+	if (!is_sort(&all))
+		trie(&all);
 
 	printf("\nNombre de coups = %d\n", all.nb_act);
 
