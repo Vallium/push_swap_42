@@ -12,7 +12,7 @@ void	trie(t_stacks *stacks)
 	int min;
 	int index;
 
-	while (stacks->nb_sa > 0)
+	while (stacks->nb_sa > 1)
 	{
 		min = sa_min(stacks, &index);
 		while (*(int *)stacks->sa->content != min)
