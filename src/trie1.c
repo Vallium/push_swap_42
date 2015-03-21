@@ -7,6 +7,7 @@
 
 #include "push_swap.h"
 
+
 void	trie(t_stacks *stacks)
 {
 	int min;
