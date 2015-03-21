@@ -25,7 +25,8 @@ void	do_pa(t_stacks *stacks)
 		stacks->nb_sa++;
 		stacks->nb_sb--;
 		}
-	printf("PA\n");
+	printf("PA ");
+	stacks->nb_act++;
 }
 
 void	do_pb(t_stacks *stacks)
@@ -41,5 +42,6 @@ void	do_pb(t_stacks *stacks)
 		stacks->nb_sa--;
 		stacks->nb_sb++;
 	}
-	printf("PB\n");
+	printf("PB ");
+	stacks->nb_act++;
 }

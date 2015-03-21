@@ -22,6 +22,7 @@ typedef struct	s_stacks
 	int			nb_sa;
 	t_list		*sb;
 	int			nb_sb;
+	int			nb_act;
 }				t_stacks;
 
 void			do_sa(t_stacks *stacks);
@@ -35,5 +36,7 @@ void			do_rrb(t_stacks *stacks);
 void			do_ss(t_stacks *stacks);
 void			do_rr(t_stacks *stacks);
 void			do_rrr(t_stacks *stacks);
+
+void			trie(t_stacks *stacks);
 
 #endif

@@ -36,7 +36,8 @@ void	do_sa(t_stacks *stacks)
 		tmp1->next = stacks->sa;
 		stacks->sa = tmp1;
 	}
-	printf("SA\n");
+	printf("SA ");
+	stacks->nb_act++;
 }
 
 void	do_sb(t_stacks *stacks)
@@ -62,11 +63,13 @@ void	do_sb(t_stacks *stacks)
 		tmp1->next = stacks->sb;
 		stacks->sb = tmp1;
 	}
-	printf("SB\n");
+	printf("SB ");
+	stacks->nb_act++;
 }
 
 void	do_ss(t_stacks *stacks)
 {
 	do_sa(stacks);
 	do_sb(stacks);
+	stacks->nb_act--;
 }

@@ -17,7 +17,8 @@ SRC		=	main.c		\
 			do_s.c		\
 			do_p.c		\
 			do_r.c		\
-			do_rr.c
+			do_rr.c		\
+			trie1.c		
 
 UNAME_S := $(shell uname -s)
 

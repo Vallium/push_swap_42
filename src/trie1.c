@@ -9,19 +9,31 @@
 #include <limits.h>
 
 
-static void	min(t_stacks *stacks)
+static int	lstmin(t_stacks *stacks)
 {
 	int i = INT_MAX;
-	t_list *tmp = stacks.sa;
+	t_list *tmp = stacks->sa;
 	while (tmp)
 	{
-		if (*tmp.content < i)
-			i = *tmp.content;
+		if (*((int *)tmp->content) < i)
+			i = *(int *)tmp->content;
 		tmp = tmp->next;
 	}
+	return (i);
 }
 
 void	trie(t_stacks *stacks)
 {
+	int min;
+
+	while (stacks->nb_sa > 0)
+	{
+		min = lstmin(stacks);
+		while (*(int *)stacks->sa->content != min)
+			do_ra(stacks);
+		do_pb(stacks);
+	}
+	while (stacks->nb_sb)
+		do_pa(stacks);
 
 }
