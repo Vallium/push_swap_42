@@ -37,6 +37,19 @@ void	print_stacks(t_stacks *st)
 	printf(" NULL\n");
 }
 
+int	sa_min(t_stacks *stacks)
+{
+	int i = INT_MAX;
+	t_list *tmp = stacks->sa;
+	while (tmp)
+	{
+		if (*((int *)tmp->content) < i)
+			i = *(int *)tmp->content;
+		tmp = tmp->next;
+	}
+	return (i);
+}
+
 int		main(int argc, char **argv)
 {
 	int nb;

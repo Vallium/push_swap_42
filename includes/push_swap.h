@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "libft.h"
+#include <limits.h>
 # include <stdio.h>
 
 typedef struct	s_stacks
@@ -38,5 +39,6 @@ void			do_rr(t_stacks *stacks);
 void			do_rrr(t_stacks *stacks);
 
 void			trie(t_stacks *stacks);
+int				sa_min(t_stacks *stacks);
 
 #endif
