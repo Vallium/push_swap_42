@@ -17,7 +17,7 @@ void	trie(t_stacks *stacks)
 		min = sa_min(stacks, &index);
 		while (*(int *)stacks->sa->content != min)
 		{
-			if (index > (stacks->nb_sa / 2))
+			if (index >= (stacks->nb_sa / 2))
 				do_rra(stacks);
 			else
 				do_ra(stacks);
