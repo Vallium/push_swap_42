@@ -86,5 +86,21 @@ normeLibft:
 norme: normeLibft
 	@$(NORMINETTE) $(SRC_DIR)/ $(HEAD_DIR)/
 
+test:
+	@echo "\nPile vide"
+	./push_swap
+	@echo "\nPile avec 1"
+	./push_swap 1
+	@echo "\nPile avec alea"
+	./push_swap 9 5 7 8 2 3 5 1
+	@echo "\nPile avec nega"
+	./push_swap -9 -5 -7 -8 -2 -3 -5 -1
+	@echo "\nPile 3 elem odre inverse (2 MAX)" 
+	./push_swap 3 2 1
+	@echo "\n2 premier inverse (JUSTE 1 SWAP)" 
+	./push_swap 2 1 3 4 5 6 7 8 9 10 
+	@echo "\n2 dernier inverse(8 MAX)" 
+	./push_swap 1 2 3 4 5 6 7 8 10 9 
+
 re: fclean
 	make
