@@ -10,12 +10,18 @@
 void	trie(t_stacks *stacks)
 {
 	int min;
+	int index;
 
 	while (stacks->nb_sa > 0)
 	{
-		min = sa_min(stacks);
+		min = sa_min(stacks, &index);
 		while (*(int *)stacks->sa->content != min)
-			do_ra(stacks);
+		{
+			if (index > (stacks->nb_sa / 2))
+				do_rra(stacks);
+			else
+				do_ra(stacks);
+		}
 		do_pb(stacks);
 	}
 	while (stacks->nb_sb)

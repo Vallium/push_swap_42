@@ -39,6 +39,6 @@ void			do_rr(t_stacks *stacks);
 void			do_rrr(t_stacks *stacks);
 
 void			trie(t_stacks *stacks);
-int				sa_min(t_stacks *stacks);
+int				sa_min(t_stacks *stacks, int *ret);
 
 #endif

@@ -58,14 +58,20 @@ void	print_stacks(t_stacks *st)
 	printf(" NULL\n");
 }
 
-int	sa_min(t_stacks *stacks)
+int	sa_min(t_stacks *stacks, int *ret)
 {
 	int i = INT_MAX;
+	int index = 0;
+	*ret = -1;
 	t_list *tmp = stacks->sa;
 	while (tmp)
 	{
 		if (*((int *)tmp->content) < i)
+		{
 			i = *(int *)tmp->content;
+			*ret = index;
+		}
+		index++;
 		tmp = tmp->next;
 	}
 	return (i);
