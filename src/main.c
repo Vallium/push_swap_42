@@ -88,6 +88,7 @@ int		main(int argc, char **argv)
 	all.sb = NULL;
 	all.nb_sa = 0;
 	all.nb_sb = 0;
+	all.nb_act = 0;
 	while (all.nb_sa + 1 < argc)
 	{
 		nb = ft_atoi(argv[(all.nb_sa++) + 1]);
