@@ -40,5 +40,6 @@ void			do_rrr(t_stacks *stacks);
 
 void			trie(t_stacks *stacks);
 int				sa_min(t_stacks *stacks, int *ret);
+int		is_sort(t_stacks *stacks);
 
 #endif

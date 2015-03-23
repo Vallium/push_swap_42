@@ -18,6 +18,8 @@ int		is_sort(t_stacks *stacks)
 {
 	t_list	*tmp;
 	int		i;
+	if (stacks->nb_sb > 0)
+		return (0);
 	if (stacks->nb_sa > 1)
 	{
 		tmp = stacks->sa;
@@ -96,7 +98,7 @@ int		main(int argc, char **argv)
 	if (!is_sort(&all))
 		trie(&all);
 
-	printf("\nNombre de coups = %d\n", all.nb_act);
+	printf("\nNombre de coups = \033[33m%d\033[37m\n", all.nb_act);
 
 	//print_stacks(&all);
 
