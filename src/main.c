@@ -79,6 +79,31 @@ int	sa_min(t_stacks *stacks, int *ret)
 	return (i);
 }
 
+void	free_stacks(t_stacks *stacks)
+{
+	t_list	*tmp;
+
+	tmp = stacks->sa;
+	while (tmp->next)
+	{
+		tmp->content = NULL;
+		free(tmp->content);
+		tmp = tmp->next;
+	}
+	stacks->sa = NULL;
+	free(stacks->sa);
+
+	tmp = stacks->sb;
+	while (tmp->next)
+	{
+		tmp->content = NULL;
+		free(tmp->content);
+		tmp = tmp->next;
+	}
+	stacks->sb = NULL;
+	free(stacks->sb);
+}
+
 int		main(int argc, char **argv)
 {
 	int nb;
@@ -101,7 +126,6 @@ int		main(int argc, char **argv)
 
 	printf("\nNombre de coups = \033[33m%d\033[37m\n", all.nb_act);
 
-	//print_stacks(&all);
-
+	print_stacks(&all);
 	return (0);
 }
