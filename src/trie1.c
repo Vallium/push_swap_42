@@ -22,6 +22,15 @@ void	trie(t_stacks *stacks)
 	int min;
 	int index;
 
+	if (is_presk_sort(stacks))
+	{
+		do_rra(stacks);
+		do_rra(stacks);
+		do_sa(stacks);
+		do_ra(stacks);
+		do_ra(stacks);
+		return ;
+	}
 	while (stacks->nb_sa > 1)
 	{
 		if (is_sort(stacks))

@@ -36,6 +36,29 @@ int		is_sort(t_stacks *stacks)
 	return (1);
 }
 
+int		is_presk_sort(t_stacks *stacks)
+{
+	t_list	*tmp;
+	t_list	*bfr;
+
+	tmp = stacks->sa;
+	while (tmp->next)
+	{
+		bfr = tmp;
+		tmp = tmp->next;
+	}
+	tmp->next = bfr;
+	bfr->next = 0;
+	if (is_sort(stacks))
+	{
+		bfr->next = tmp;
+		tmp->next = 0;
+		return (1);
+	}
+	bfr->next = tmp;
+	tmp->next = 0;
+	return (0);
+}
 
 void	print_stacks(t_stacks *st)
 {
