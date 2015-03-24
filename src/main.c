@@ -115,7 +115,6 @@ void	free_stacks(t_stacks *stacks)
 	}
 	stacks->sa = NULL;
 	free(stacks->sa);
-
 	tmp = stacks->sb;
 	while (tmp->next)
 	{
@@ -125,6 +124,29 @@ void	free_stacks(t_stacks *stacks)
 	}
 	stacks->sb = NULL;
 	free(stacks->sb);
+}
+
+int		error_handling(char **argv)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	while (argv[i])
+	{
+		j = 0;
+		while (argv[i][j])
+		{
+			if(!ft_isdigit(argv[i][j]))
+			{
+				ft_putstr("Error\n");
+				return (0);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (1);
 }
 
 int		main(int argc, char **argv)
@@ -137,6 +159,8 @@ int		main(int argc, char **argv)
 	all.nb_sa = 0;
 	all.nb_sb = 0;
 	all.nb_act = 0;
+	if(!error_handling(argv))
+		return (0);
 	while (all.nb_sa + 1 < argc)
 	{
 		nb = ft_atoi(argv[(all.nb_sa++) + 1]);
