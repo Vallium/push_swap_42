@@ -18,6 +18,13 @@
 # include <stdio.h>
 # include <stdlib.h>
 
+typedef struct	s_opt
+{
+	int			nb;
+	char		err;
+	char		*optstr;
+}				t_opt;
+
 typedef struct	s_stacks
 {
 	t_list		*sa;
@@ -44,5 +51,7 @@ int				sa_min(t_stacks *stacks, int *ret);
 int				is_sort(t_stacks *stacks);
 int				is_presk_sort(t_stacks *stacks);
 int				*lst2tab(t_list **lst, int *size);
+
+void			print_stacks(t_stacks *st);
 
 #endif

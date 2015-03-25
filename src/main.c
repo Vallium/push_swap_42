@@ -65,29 +65,6 @@ int		is_presk_sort(t_stacks *stacks)
 	return (0);
 }
 
-void	print_stacks(t_stacks *st)
-{
-	t_list *tmp;
-
-	tmp = st->sa;
-	printf("Pile A (%d elems): ", st->nb_sa);
-	while (tmp)
-	{
-		printf(" %d ->",*((int *)tmp->content));
-		tmp = tmp->next;
-	}
-	printf(" NULL\n");
-
-	tmp = st->sb;
-	printf("Pile B (%d elems): ", st->nb_sb);
-	while (tmp)
-	{
-		printf(" %d ->",*((int *)tmp->content));
-		tmp = tmp->next;
-	}
-	printf(" NULL\n");
-}
-
 int	sa_min(t_stacks *stacks, int *ret)
 {
 	int i = INT_MAX;
@@ -235,19 +212,15 @@ int		main(int argc, char **argv)
 	{
 		if (*ptr[i - 1] == *ptr[i])
 		{
-			printf("doublon\n");
+			ft_putstr("Error\n");
 			exit(0);
 		}
 	}
-
-
-
-	//print_stacks(&all);
-
 	if (!is_sort(&all))
 		trie(&all);
-
-	printf("\nNombre de coups = \033[33m%d\033[37m\n", all.nb_act);
+	ft_putstr("\nNombre de coups = \033[33m");
+	ft_putnbr(all.nb_act);
+	ft_putstr("\033[37m\n");
 
 	print_stacks(&all);
 	return (0);

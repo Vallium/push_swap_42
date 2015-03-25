@@ -25,7 +25,7 @@ void	do_rra(t_stacks *stacks)
 		stacks->sa = tmp->next;
 		tmp->next = 0;
 	}
-	printf("RRA ");
+	ft_putstr("RRA ");
 	stacks->nb_act++;
 }
 
@@ -42,7 +42,7 @@ void	do_rrb(t_stacks *stacks)
 		stacks->sb = tmp->next;
 		tmp->next = 0;
 	}
-	printf("RRB ");
+	ft_putstr("RRB ");
 	stacks->nb_act++;
 }
 
