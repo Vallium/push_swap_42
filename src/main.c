@@ -224,28 +224,19 @@ int		main(int argc, char **argv)
 	int *data = lst2tab(&all.sa, &size);
 	int **ptr = (int **)malloc(sizeof(int *) * size);
 
-		int i;
+	int i;
 	for (i=0; i < size; i++)
-	{
 		ptr[i] = &data[i];
-	}
 
-	for (i=0; i < size; i++)
-	{
-		printf("tab[%d] = %d\n", i, *ptr[i]);
-	}
 	ft_sort_qck((void **)ptr, size, cmp);
-	for (i=0; i < size; i++)
-	{
-		printf("tab[%d] = %d\n", i, *ptr[i]);
-	}
+
 
 	for (i=1; i < size; i++)
 	{
 		if (*ptr[i - 1] == *ptr[i])
 		{
 			printf("doublon\n");
-			exit(2);
+			exit(0);
 		}
 	}
 
