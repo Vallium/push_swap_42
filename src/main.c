@@ -41,7 +41,7 @@ int		is_presk_sort(t_stacks *stacks)
 	t_list	*tmp;
 	t_list	*bfr;
 
-	if (stacks->nb_sa > 2 && stacks->nb_sb == 0)
+	if (stacks->nb_sa > 3 && stacks->nb_sb == 0)
 	{
 
 		tmp = stacks->sa;
