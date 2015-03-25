@@ -18,17 +18,17 @@ SRC		=	main.c		\
 			do_p.c		\
 			do_r.c		\
 			do_rr.c		\
-			trie1.c		
+			trie1.c
 
 UNAME_S := $(shell uname -s)
 
 ifeq ($(UNAME_S),Linux)
 
-SRC	+= 	
+SRC	+=
 
 endif
 ifeq ($(UNAME_S),Darwin)
-SRC	+=	
+SRC	+=
 endif
 
 STATIC_OBJ	= $(patsubst %.c,$(STATIC_DIR)/%.o,$(SRC))
@@ -43,7 +43,7 @@ LIBFT_DEBUG	= libft/libft_debug.a
 LIBFT_HEAD	= libft/includes/
 
 CC			= gcc
-FLAGS		= -Wall -Wextra #-Werror
+FLAGS		= -Wall -Wextra -Werror
 NORMINETTE	= ~/project/colorminette/colorminette
 
 $(shell mkdir -p $(STATIC_DIR) $(DEBUG_DIR))
@@ -95,11 +95,11 @@ test:
 	./push_swap 9 5 7 8 2 3 5 1
 	@echo "\nPile avec nega"
 	./push_swap -9 -5 -7 -8 -2 -3 -5 -1
-	@echo "\nPile 3 elem odre inverse (2 MAX)" 
+	@echo "\nPile 3 elem odre inverse (2 MAX)"
 	./push_swap 3 2 1
-	@echo "\n2 premier inverse (JUSTE 1 SWAP)" 
-	./push_swap 2 1 3 4 5 6 7 8 9 10 
-	@echo "\n2 dernier inverse(8 MAX)" 
+	@echo "\n2 premier inverse (JUSTE 1 SWAP)"
+	./push_swap 2 1 3 4 5 6 7 8 9 10
+	@echo "\n2 dernier inverse(8 MAX)"
 	./push_swap 1 2 3 4 5 6 7 8 10 9
 	@echo "\n\n"
 	./push_swap 1 2 3

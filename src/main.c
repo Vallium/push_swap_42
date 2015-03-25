@@ -41,22 +41,27 @@ int		is_presk_sort(t_stacks *stacks)
 	t_list	*tmp;
 	t_list	*bfr;
 
-	tmp = stacks->sa;
-	while (tmp->next)
+	if (stacks->nb_sa > 2 && stacks->nb_sb == 0)
 	{
+
+		tmp = stacks->sa;
 		bfr = tmp;
-		tmp = tmp->next;
-	}
-	tmp->next = bfr;
-	bfr->next = 0;
-	if (is_sort(stacks))
-	{
+		while (tmp->next)
+		{
+			bfr = tmp;
+			tmp = tmp->next;
+		}
+		tmp->next = bfr;
+		bfr->next = 0;
+		if (is_sort(stacks))
+		{
+			bfr->next = tmp;
+			tmp->next = 0;
+			return (1);
+		}
 		bfr->next = tmp;
 		tmp->next = 0;
-		return (1);
 	}
-	bfr->next = tmp;
-	tmp->next = 0;
 	return (0);
 }
 
@@ -131,7 +136,7 @@ int		error_handling(char **argv)
 	int		i;
 	int		j;
 
-	i = 0;
+	i = 1;
 	while (argv[i])
 	{
 		j = 0;
