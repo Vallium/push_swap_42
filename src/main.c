@@ -131,6 +131,36 @@ void	free_stacks(t_stacks *stacks)
 	free(stacks->sb);
 }
 
+int			ft_atoi_err(const char *str, int *err)
+{
+	unsigned int		ret;
+	unsigned int		prev;
+	char	si;
+
+	ret = 0;
+	si = 1;
+	*err = 0;
+	while (*str == ' ' || *str == '\t' || *str == '\r'
+			|| *str == '\v' || *str == '\n' || *str == '\f')
+		str++;
+	if (*str == '-' || *str == '+')
+	{
+		si = (*str == '-' ? -1 : 1);
+		str++;
+	}
+	while (ft_isdigit(*str))
+	{
+		prev = ret;
+		ret = ret * 10 + (*str - '0');
+		if (prev > ret)
+			*err = 1;
+		str++;
+	}
+	if ((ret - 1 > INT_MAX && si < 0) || (ret > INT_MAX && si > 0))
+		*err = 1;
+	return (si * ret);
+}
+
 int		error_handling(char **argv)
 {
 	int		i;
@@ -139,7 +169,12 @@ int		error_handling(char **argv)
 	i = 1;
 	while (argv[i])
 	{
-		j = 0;
+		j = 1;
+		if (!ft_isdigit(argv[i][0]) && argv[i][0] != '-')
+		{
+			ft_putstr("Error\n");
+			return (0);
+		}
 		while (argv[i][j])
 		{
 			if(!ft_isdigit(argv[i][j]))
@@ -156,7 +191,8 @@ int		error_handling(char **argv)
 
 int		main(int argc, char **argv)
 {
-	int nb;
+	int		nb;
+	int		err;
 	t_stacks	all;
 
 	all.sa = NULL;
@@ -168,7 +204,12 @@ int		main(int argc, char **argv)
 		return (0);
 	while (all.nb_sa + 1 < argc)
 	{
-		nb = ft_atoi(argv[(all.nb_sa++) + 1]);
+		nb = ft_atoi_err(argv[(all.nb_sa++) + 1], &err);
+		if (err)
+		{
+			ft_putstr("Error\n");
+			return (0);
+		}
 		ft_lstsmartpushback(&all.sa, ft_lstnew(&nb, sizeof(int)));
 	}
 	//print_stacks(&all);

@@ -87,6 +87,16 @@ norme: normeLibft
 	@$(NORMINETTE) $(SRC_DIR)/ $(HEAD_DIR)/
 
 test:
+	@echo "\nGestion d'erreur"
+	@echo "\n- non digit arg:"
+	./push_swap 67 a 8 2
+	@echo "\n- doublon arg:"
+	./push_swap 7 3 8 2 1 2 9 6
+	@echo "\n- int Over Flow test:"
+	./push_swap 2147483647 2147483646 2147483648
+	./push_swap 2147483647 432 2 980
+	./push_swap -2147483648 324 -2147483649
+	./push_swap -2147483648 57483 43 1 890
 	@echo "\nPile vide"
 	./push_swap
 	@echo "\nPile avec 1"
@@ -101,13 +111,13 @@ test:
 	./push_swap 2 1 3 4 5 6 7 8 9 10
 	@echo "\n2 dernier inverse(8 MAX)"
 	./push_swap 1 2 3 4 5 6 7 8 10 9
-	@echo "\n\n"
-	./push_swap 1 2 3
-	./push_swap 1 3 2
-	./push_swap 2 1 3
-	./push_swap 2 3 1
-	./push_swap 3 1 2
-	./push_swap 3 2 1
+	#@echo "\n\n"
+	#./push_swap 1 2 3
+	#./push_swap 1 3 2
+	#./push_swap 2 1 3
+	#./push_swap 2 3 1
+	#./push_swap 3 1 2
+	#./push_swap 3 2 1
 
 re: fclean
 	make
