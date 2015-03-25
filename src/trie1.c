@@ -55,3 +55,26 @@ void	trie(t_stacks *stacks)
 		do_pa(stacks);
 
 }
+
+int		*lst2tab(t_list **lst, int *size)
+{
+	t_list *tmp;
+	int *tab;
+
+	*size = 0;
+	tmp = *lst;
+	while (tmp)
+	{
+		(*size)++;
+		tmp = tmp->next;
+	}
+	tmp = *lst;
+	tab = (int *)malloc(sizeof(int) * (*size));
+	*size = 0;
+	while (tmp)
+	{
+		tab[(*size)++] = *(int *)tmp->content;
+		tmp = tmp->next;
+	}
+	return (tab);
+}

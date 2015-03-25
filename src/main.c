@@ -189,6 +189,13 @@ int		error_handling(char **argv)
 	return (1);
 }
 
+int cmp(void *a, void *b)
+{
+	int a1 = *(int *)a;
+	int b1 = *(int *)b;
+	return (a1 > b1);
+}
+
 int		main(int argc, char **argv)
 {
 	int		nb;
@@ -212,6 +219,38 @@ int		main(int argc, char **argv)
 		}
 		ft_lstsmartpushback(&all.sa, ft_lstnew(&nb, sizeof(int)));
 	}
+
+	int size;
+	int *data = lst2tab(&all.sa, &size);
+	int **ptr = (int **)malloc(sizeof(int *) * size);
+
+		int i;
+	for (i=0; i < size; i++)
+	{
+		ptr[i] = &data[i];
+	}
+
+	for (i=0; i < size; i++)
+	{
+		printf("tab[%d] = %d\n", i, *ptr[i]);
+	}
+	ft_sort_qck((void **)ptr, size, cmp);
+	for (i=0; i < size; i++)
+	{
+		printf("tab[%d] = %d\n", i, *ptr[i]);
+	}
+
+	for (i=1; i < size; i++)
+	{
+		if (*ptr[i - 1] == *ptr[i])
+		{
+			printf("doublon\n");
+			exit(2);
+		}
+	}
+
+
+
 	//print_stacks(&all);
 
 	if (!is_sort(&all))
