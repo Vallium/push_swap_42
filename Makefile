@@ -111,13 +111,18 @@ test:
 	./push_swap 2 1 3 4 5 6 7 8 9 10
 	@echo "\n2 dernier inverse(8 MAX)"
 	./push_swap 1 2 3 4 5 6 7 8 10 9
-	#@echo "\n\n"
-	#./push_swap 1 2 3
-	#./push_swap 1 3 2
-	#./push_swap 2 1 3
-	#./push_swap 2 3 1
-	#./push_swap 3 1 2
-	#./push_swap 3 2 1
+	@echo "\n\n"
+	./push_swap 1 2 3
+	@echo "\n"
+	./push_swap 1 3 2
+	@echo "\n"
+	./push_swap 2 1 3
+	@echo "\n"
+	./push_swap 2 3 1
+	@echo "\n"
+	./push_swap 3 1 2
+	@echo "\n"
+	./push_swap 3 2 1
 
 re: fclean
 	make
