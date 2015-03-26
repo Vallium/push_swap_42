@@ -36,7 +36,7 @@ void	do_sa(t_stacks *stacks)
 		tmp1->next = stacks->sa;
 		stacks->sa = tmp1;
 	}
-	ft_putstr("SA ");
+	ft_putstr("SA");
 	stacks->nb_act++;
 }
 
@@ -63,7 +63,7 @@ void	do_sb(t_stacks *stacks)
 		tmp1->next = stacks->sb;
 		stacks->sb = tmp1;
 	}
-	ft_putstr("SB ");
+	ft_putstr("SB");
 	stacks->nb_act++;
 }
 
