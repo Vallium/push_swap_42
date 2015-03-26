@@ -39,7 +39,7 @@ void	trie(t_stacks *stacks)
 		while (*(int *)stacks->sa->content != min)
 		{
 			if (is_sort(stacks))
-				return;
+				break;
 			if (need_sa(stacks))
 				do_sa(stacks);
 			else if (index >= (stacks->nb_sa / 2))
@@ -48,12 +48,12 @@ void	trie(t_stacks *stacks)
 				do_ra(stacks);
 		}
 		if (is_sort(stacks))
-			return;
+			break;
 		do_pb(stacks);
 	}
 	while (stacks->nb_sb)
 		do_pa(stacks);
-
+	ft_putchar('\n');
 }
 
 int		*lst2tab(t_list **lst, int *size)

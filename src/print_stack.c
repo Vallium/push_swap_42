@@ -19,15 +19,14 @@ void	print_stack_a(t_stacks *st)
 	tmp = st->sa;
 	ft_putstr("Stack A (");
 	ft_putnbr(st->nb_sa);
-	ft_putstr("elements): ");
+	ft_putstr(" elements): ");
 	if (!tmp)
-		ft_putstr(" NULL\n");
+		ft_putstr("NULL\n");
 	while (tmp)
 	{
-		ft_putchar(' ');
 		ft_putnbr(*((int *)tmp->content));
 		if (tmp->next)
-			ft_putstr(" ->");
+			ft_putstr(" -> ");
 		tmp = tmp->next;
 	}
 }
@@ -39,15 +38,15 @@ void	print_stack_b(t_stacks *st)
 	tmp = st->sb;
 	ft_putstr("Stack B (");
 	ft_putnbr(st->nb_sb);
-	ft_putstr("elements): ");
+	ft_putstr(" elements): ");
 	if (!tmp)
-		ft_putstr(" NULL\n");
+		ft_putstr("NULL\n");
 	while (tmp)
 	{
 		ft_putchar(' ');
 		ft_putnbr(*((int *)tmp->content));
 		if (tmp->next)
-			ft_putstr(" ->");
+			ft_putstr(" -> ");
 		tmp = tmp->next;
 	}
 }
@@ -55,8 +54,7 @@ void	print_stack_b(t_stacks *st)
 void	print_stacks(t_stacks *st)
 {
 	print_stack_a(st);
-	printf("\n");
-	print_stack_b(st);
 	ft_putchar('\n');
+	print_stack_b(st);
 }
 

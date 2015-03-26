@@ -164,10 +164,13 @@ int		error_handling(char **argv)
 	return (1);
 }
 
-int cmp(void *a, void *b)
+int		cmp(void *a, void *b)
 {
-	int a1 = *(int *)a;
-	int b1 = *(int *)b;
+	int		a1;
+	int		b1;
+
+	a1 = *(int *)a;
+	b1 = *(int *)b;
 	return (a1 > b1);
 }
 
@@ -221,23 +224,56 @@ void	check_dups(t_stacks st)
 	}
 }
 
+void	print_acts_nb(int i)
+{
+	ft_putstr("Number of actions = \033[33m");
+	ft_putnbr(i);
+	ft_putstr("\033[37m\n");
+}
+
+void	illegal_option(t_opt *opt)
+{
+	ft_putstr_fd("push_swap: illegal option -- ", 2);
+	ft_putchar_fd(opt->err, 2);
+	ft_putchar_fd('\n', 2);
+//	usage();
+	exit (2);
+}
+
+int		get_opt_assi(int argc, char **argv, t_opt *opt)
+{
+	char	c;
+	int		i;
+
+	i = 0;
+	opt->optstr = "ctv";
+	opt->nb = 1;
+	while ((c = ft_get_opt(argc, argv, opt)) > 0)
+	{
+		if (c == '?')
+			illegal_option(opt);
+		i = (c == 'v') ? i | 1 : i;
+		i = (c == 'c') ? i | 2 : i;
+		i = (c == 't') ? i | 4 : i;
+	}
+	return (i);
+}
+
 int		main(int argc, char **argv)
 {
 	t_stacks	all;
+	t_opt		opt;
 
-
-	if(!error_handling(argv))
+	all.options = get_opt_assi(argc, argv, &opt);
+	if(!error_handling(argv + opt.nb - 1))
 		return (0);
-
-	fill_stacks(&all, argv, argc);
+	fill_stacks(&all, argv + opt.nb - 1, argc - opt.nb + 1);
 	check_dups(all);
-
 	if (!is_sort(&all))
 		trie(&all);
-	ft_putstr("\nNombre de coups = \033[33m");
-	ft_putnbr(all.nb_act);
-	ft_putstr("\033[37m\n");
-
-	print_stacks(&all);
+	if (all.options & 4)
+		print_acts_nb(all.nb_act);
+	if (all.options & 1)
+		print_stacks(&all);
 	return (0);
 }

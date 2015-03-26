@@ -15,7 +15,6 @@
 
 # include "libft.h"
 # include <limits.h>
-# include <stdio.h>
 # include <stdlib.h>
 
 typedef struct	s_opt
@@ -32,6 +31,7 @@ typedef struct	s_stacks
 	t_list		*sb;
 	int			nb_sb;
 	int			nb_act;
+	int			options;
 }				t_stacks;
 
 void			do_sa(t_stacks *stacks);
@@ -53,5 +53,7 @@ int				is_presk_sort(t_stacks *stacks);
 int				*lst2tab(t_list **lst, int *size);
 
 void			print_stacks(t_stacks *st);
+
+int				ft_get_opt(int argc, char *av[], t_opt *opt);
 
 #endif

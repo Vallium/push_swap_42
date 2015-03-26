@@ -19,7 +19,8 @@ SRC		=	main.c			\
 			do_r.c			\
 			do_rr.c			\
 			trie1.c			\
-			print_stack.c
+			print_stack.c	\
+			get_opt.c
 
 UNAME_S := $(shell uname -s)
 
@@ -44,7 +45,7 @@ LIBFT_DEBUG	= libft/libft_debug.a
 LIBFT_HEAD	= libft/includes/
 
 CC			= gcc
-FLAGS		= -Wall -Wextra -Werror
+FLAGS		= -Wall -Wextra # -Werror
 NORMINETTE	= ~/project/colorminette/colorminette
 
 $(shell mkdir -p $(STATIC_DIR) $(DEBUG_DIR))
