@@ -95,15 +95,18 @@ test:
 	./push_swap 7 3 8 2 1 2 9 6
 	@echo "\n- int Over Flow test:"
 	./push_swap 2147483647 2147483646 2147483648
+	@echo "\n"
 	./push_swap 2147483647 432 2 980
+	@echo "\n"
 	./push_swap -2147483648 324 -2147483649
+	@echo "\n"
 	./push_swap -2147483648 57483 43 1 890
 	@echo "\nPile vide"
 	./push_swap
 	@echo "\nPile avec 1"
 	./push_swap 1
 	@echo "\nPile avec alea"
-	./push_swap 9 5 7 8 2 3 5 1
+	./push_swap 9 2 7 8 2 3 5 1
 	@echo "\nPile avec nega"
 	./push_swap -9 -5 -7 -8 -2 -3 -5 -1
 	@echo "\nPile 3 elem odre inverse (2 MAX)"

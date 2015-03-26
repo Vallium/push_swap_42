@@ -12,8 +12,6 @@
 
 #include "push_swap.h"
 
-#include <stdio.h>
-
 int		is_sort(t_stacks *stacks)
 {
 	t_list	*tmp;
@@ -43,7 +41,6 @@ int		is_presk_sort(t_stacks *stacks)
 
 	if (stacks->nb_sa > 3 && stacks->nb_sb == 0)
 	{
-
 		tmp = stacks->sa;
 		bfr = tmp;
 		while (tmp->next)
@@ -65,12 +62,16 @@ int		is_presk_sort(t_stacks *stacks)
 	return (0);
 }
 
-int	sa_min(t_stacks *stacks, int *ret)
+int		sa_min(t_stacks *stacks, int *ret)
 {
-	int i = INT_MAX;
-	int index = 0;
+	t_list	*tmp;
+	int		i;
+	int		index;
+
 	*ret = -1;
-	t_list *tmp = stacks->sa;
+	i = INT_MAX;
+	index = 0;
+	tmp = stacks->sa;
 	while (tmp)
 	{
 		if (*((int *)tmp->content) < i)
@@ -108,11 +109,11 @@ void	free_stacks(t_stacks *stacks)
 	free(stacks->sb);
 }
 
-int			ft_atoi_err(const char *str, int *err)
+int		ft_atoi_err(const char *str, int *err)
 {
-	unsigned int		ret;
-	unsigned int		prev;
-	char	si;
+	unsigned int	ret;
+	unsigned int	prev;
+	char			si;
 
 	ret = 0;
 	si = 1;
@@ -121,10 +122,7 @@ int			ft_atoi_err(const char *str, int *err)
 			|| *str == '\v' || *str == '\n' || *str == '\f')
 		str++;
 	if (*str == '-' || *str == '+')
-	{
-		si = (*str == '-' ? -1 : 1);
-		str++;
-	}
+		si = (*str++ == '-' ? -1 : 1);
 	while (ft_isdigit(*str))
 	{
 		prev = ret;
@@ -173,49 +171,67 @@ int cmp(void *a, void *b)
 	return (a1 > b1);
 }
 
-int		main(int argc, char **argv)
+void	fill_stacks(t_stacks *st, char **argv, int argc)
 {
 	int		nb;
 	int		err;
-	t_stacks	all;
 
-	all.sa = NULL;
-	all.sb = NULL;
-	all.nb_sa = 0;
-	all.nb_sb = 0;
-	all.nb_act = 0;
-	if(!error_handling(argv))
-		return (0);
-	while (all.nb_sa + 1 < argc)
+	st->sa = NULL;
+	st->sb = NULL;
+	st->nb_sa = 0;
+	st->nb_sb = 0;
+	st->nb_act = 0;
+	while (st->nb_sa + 1 < argc)
 	{
-		nb = ft_atoi_err(argv[(all.nb_sa++) + 1], &err);
+		nb = ft_atoi_err(argv[(st->nb_sa++) + 1], &err);
 		if (err)
 		{
 			ft_putstr("Error\n");
-			return (0);
+			exit(0);
 		}
-		ft_lstsmartpushback(&all.sa, ft_lstnew(&nb, sizeof(int)));
+		ft_lstsmartpushback(&st->sa, ft_lstnew(&nb, sizeof(int)));
 	}
+}
 
-	int size;
-	int *data = lst2tab(&all.sa, &size);
-	int **ptr = (int **)malloc(sizeof(int *) * size);
+void	check_dups(t_stacks st)
+{
+	int		size;
+	int		*data;
+	int		**ptr;
+	int		i;
 
-	int i;
-	for (i=0; i < size; i++)
+	data = lst2tab(&st.sa, &size);
+	ptr = (int **)malloc(sizeof(int *) * size);
+	i = 0;
+	while (i < size)
+	{
 		ptr[i] = &data[i];
-
+		i++;
+	}
 	ft_sort_qck((void **)ptr, size, cmp);
-
-
-	for (i=1; i < size; i++)
+	i = 1;
+	while (i < size)
 	{
 		if (*ptr[i - 1] == *ptr[i])
 		{
 			ft_putstr("Error\n");
 			exit(0);
 		}
+		i++;
 	}
+}
+
+int		main(int argc, char **argv)
+{
+	t_stacks	all;
+
+
+	if(!error_handling(argv))
+		return (0);
+
+	fill_stacks(&all, argv, argc);
+	check_dups(all);
+
 	if (!is_sort(&all))
 		trie(&all);
 	ft_putstr("\nNombre de coups = \033[33m");
