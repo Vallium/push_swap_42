@@ -18,6 +18,8 @@ int				get_opt(char *av[], t_opt *opt, int *i)
 
 	if (!(*i))
 	{
+		if (av[opt->nb][0] == '-' && ft_isdigit(av[opt->nb][1]))
+			return (0);
 		if (av[opt->nb][0] == '-' && av[opt->nb][1] != '-' && av[opt->nb][1])
 			(*i)++;
 		else
