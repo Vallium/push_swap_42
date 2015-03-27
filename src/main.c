@@ -224,11 +224,16 @@ void	check_dups(t_stacks st)
 	}
 }
 
-void	print_acts_nb(int i)
+void	print_acts_nb(int i, t_stacks all)
 {
-	ft_putstr("Number of actions = \033[33m");
+	if (all.options & 2)
+		ft_putstr("\033[33m");
+	ft_putstr("Number of actions");
+	ft_putstr("\033[0m = ");
+	if (all.options & 2)
+		ft_putstr("\033[32m");
 	ft_putnbr(i);
-	ft_putstr("\033[37m\n");
+	ft_putstr("\033[0m\n");
 }
 
 void	illegal_option(t_opt *opt)
@@ -246,15 +251,15 @@ int		get_opt_assi(int argc, char **argv, t_opt *opt)
 	int		i;
 
 	i = 0;
-	opt->optstr = "ctv";
+	opt->optstr = "acv";
 	opt->nb = 1;
 	while ((c = ft_get_opt(argc, argv, opt)) > 0)
 	{
 		if (c == '?')
 			illegal_option(opt);
-		i = (c == 'v') ? i | 1 : i;
 		i = (c == 'c') ? i | 2 : i;
-		i = (c == 't') ? i | 4 : i;
+		i = (c == 'a') ? i | 4 : i;
+		i = (c == 'v') ? i | 8 : i;
 	}
 	return (i);
 }
@@ -273,8 +278,9 @@ int		main(int argc, char **argv)
 	if (!is_sort(&all))
 		trie(&all);
 	if (all.options & 4)
-		print_acts_nb(all.nb_act);
-	if (all.options & 1)
+	{
+		print_acts_nb(all.nb_act, all);
 		print_stacks(&all);
+	}
 	return (0);
 }

@@ -18,13 +18,19 @@ void	print_stack_a(t_stacks *st)
 
 	tmp = st->sa;
 	ft_putstr("Stack A (");
+	if(st->options & 2)
+		ft_putstr("\033[31m");
 	ft_putnbr(st->nb_sa);
-	ft_putstr(" elements): ");
+	ft_putstr("\033[0m");
+	ft_putstr(st->nb_sa > 1 ? " elements): " : " element):  ");
 	if (!tmp)
-		ft_putstr("NULL\n");
+		ft_putstr("NULL");
 	while (tmp)
 	{
+		if(st->options & 2)
+			ft_putstr("\033[33m");
 		ft_putnbr(*((int *)tmp->content));
+		ft_putstr("\033[0m");
 		if (tmp->next)
 			ft_putstr(" -> ");
 		tmp = tmp->next;
@@ -37,14 +43,19 @@ void	print_stack_b(t_stacks *st)
 
 	tmp = st->sb;
 	ft_putstr("Stack B (");
+	if(st->options & 2)
+		ft_putstr("\033[31m");
 	ft_putnbr(st->nb_sb);
-	ft_putstr(" elements): ");
+	ft_putstr("\033[0m");
+	ft_putstr(st->nb_sb > 1 ? " elements): " : " element):  ");
 	if (!tmp)
-		ft_putstr("NULL\n");
+		ft_putstr("NULL");
 	while (tmp)
 	{
-		ft_putchar(' ');
+		if(st->options & 2)
+			ft_putstr("\033[33m");
 		ft_putnbr(*((int *)tmp->content));
+		ft_putstr("\033[0m");
 		if (tmp->next)
 			ft_putstr(" -> ");
 		tmp = tmp->next;
@@ -56,5 +67,7 @@ void	print_stacks(t_stacks *st)
 	print_stack_a(st);
 	ft_putchar('\n');
 	print_stack_b(st);
+	if (st->options & 8)
+		ft_putchar('\n');
 }
 

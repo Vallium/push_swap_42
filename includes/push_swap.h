@@ -53,6 +53,7 @@ int				is_presk_sort(t_stacks *stacks);
 int				*lst2tab(t_list **lst, int *size);
 
 void			print_stacks(t_stacks *st);
+void			print_move(t_stacks *st, char *str, char *color);
 
 int				ft_get_opt(int argc, char *av[], t_opt *opt);
 

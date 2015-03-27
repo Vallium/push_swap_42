@@ -25,7 +25,8 @@ void	do_pa(t_stacks *stacks)
 		stacks->nb_sa++;
 		stacks->nb_sb--;
 		}
-	ft_putstr("PA");
+	print_move(stacks, "PA", "\033[36m");
+//	ft_putstr("PA");
 	stacks->nb_act++;
 }
 
@@ -42,6 +43,7 @@ void	do_pb(t_stacks *stacks)
 		stacks->nb_sa--;
 		stacks->nb_sb++;
 	}
-	ft_putstr("PB");
+	print_move(stacks, "PB", "\033[36m");
+//	ft_putstr("PB");
 	stacks->nb_act++;
 }

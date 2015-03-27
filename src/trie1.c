@@ -21,20 +21,14 @@ void	trie(t_stacks *stacks)
 {
 	int min;
 	int index;
-	int	bo = 1;
 
 	if (is_presk_sort(stacks))
 	{
 		do_rra(stacks);
-		ft_putchar(' ');
 		do_rra(stacks);
-		ft_putchar(' ');
 		do_sa(stacks);
-		ft_putchar(' ');
 		do_ra(stacks);
-		ft_putchar(' ');
 		do_ra(stacks);
-		ft_putchar('\n');
 		return ;
 	}
 	while (stacks->nb_sa > 1)
@@ -46,10 +40,6 @@ void	trie(t_stacks *stacks)
 		{
 			if (is_sort(stacks))
 				break;
-			if (bo)
-				bo = 0;
-			else
-				ft_putchar(' ');
 			if (need_sa(stacks))
 				do_sa(stacks);
 			else if (index >= (stacks->nb_sa / 2))
@@ -59,16 +49,10 @@ void	trie(t_stacks *stacks)
 		}
 		if (is_sort(stacks))
 			break;
-		if (bo)
-			bo = 0;
-		else
-			ft_putchar(' ');do_pb(stacks);
+		do_pb(stacks);
 	}
 	while (stacks->nb_sb)
-	{
-		ft_putchar(' ');
 		do_pa(stacks);
-	}
 	ft_putchar('\n');
 }
 

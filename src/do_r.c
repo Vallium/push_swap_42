@@ -27,7 +27,8 @@ void	do_ra(t_stacks *stacks)
 		tmp2->next = tmp;
 		tmp->next = 0;
 	}
-	ft_putstr("RA");
+	print_move(stacks, "RA", "\033[35m");
+//	ft_putstr("RA");
 	stacks->nb_act++;
 }
 
@@ -46,7 +47,8 @@ void	do_rb(t_stacks *stacks)
 		tmp2->next = tmp;
 		tmp->next = 0;
 	}
-	ft_putstr("RB");
+	print_move(stacks, "RB", "\033[35m");
+//	ft_putstr("RB");
 	stacks->nb_act++;
 }
 
