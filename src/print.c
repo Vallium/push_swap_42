@@ -9,7 +9,7 @@ void		print_move(t_stacks *st, char *str, char *color)
 	if (st->options & 2)
 		ft_putstr(color);
 	ft_putstr(str);
-	ft_putstr("\033[0m");
+	ft_putstr("\033[37m");
 	if (st->options & 8)
 	{
 		ft_putchar('\n');

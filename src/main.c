@@ -233,7 +233,7 @@ void	print_acts_nb(int i, t_stacks all)
 	if (all.options & 2)
 		ft_putstr("\033[32m");
 	ft_putnbr(i);
-	ft_putstr("\033[0m\n");
+	ft_putstr("\033[37m\n\n");
 }
 
 void	illegal_option(t_opt *opt)
@@ -275,11 +275,13 @@ int		main(int argc, char **argv)
 		return (0);
 	fill_stacks(&all, argv + opt.nb - 1, argc - opt.nb + 1);
 	check_dups(all);
+	ft_putstr("\033[37m");
 	if (!is_sort(&all))
 		trie(&all);
 	if (all.options & 4)
 	{
 		print_acts_nb(all.nb_act, all);
+		ft_putstr("Final stacks state:\n");
 		print_stacks(&all);
 	}
 	return (0);
