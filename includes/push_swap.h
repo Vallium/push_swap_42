@@ -54,6 +54,12 @@ int				*lst2tab(t_list **lst, int *size);
 
 void			print_stacks(t_stacks *st);
 void			print_move(t_stacks *st, char *str, char *color);
+void			print_acts_nb(int i, t_stacks all);
+void			illegal_option(t_opt *opt);
+
+void			check_dups(t_stacks st);
+int				ft_atoi_err(const char *str, int *err);
+int				error_handling(char **argv);
 
 int				ft_get_opt(int argc, char *av[], t_opt *opt);
 

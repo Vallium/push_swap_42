@@ -22,13 +22,12 @@ void	do_ra(t_stacks *stacks)
 		tmp = stacks->sa;
 		tmp2 = stacks->sa;
 		stacks->sa = stacks->sa->next;
-		while(tmp2->next)
+		while (tmp2->next)
 			tmp2 = tmp2->next;
 		tmp2->next = tmp;
 		tmp->next = 0;
 	}
 	print_move(stacks, "RA", "\033[35m");
-//	ft_putstr("RA");
 	stacks->nb_act++;
 }
 
@@ -42,13 +41,12 @@ void	do_rb(t_stacks *stacks)
 		tmp = stacks->sb;
 		tmp2 = stacks->sb;
 		stacks->sb = stacks->sb->next;
-		while(tmp2->next)
+		while (tmp2->next)
 			tmp2 = tmp2->next;
 		tmp2->next = tmp;
 		tmp->next = 0;
 	}
 	print_move(stacks, "RB", "\033[35m");
-//	ft_putstr("RB");
 	stacks->nb_act++;
 }
 

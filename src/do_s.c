@@ -21,11 +21,10 @@ void	do_sa(t_stacks *stacks)
 	if (stacks->nb_sa > 2)
 	{
 		tmp1 = stacks->sa;
-		tmp2 = stacks->sa->next;		//memorise 2e elem
+		tmp2 = stacks->sa->next;
 		tmp3 = stacks->sa->next->next;
-
-		stacks->sa->next = tmp2->next;	//1er pointe vers le 3e
-		stacks->sa = tmp2; 				// debut pointe vers le 2e
+		stacks->sa->next = tmp2->next;
+		stacks->sa = tmp2;
 		tmp2->next = tmp1;
 		tmp1->next = tmp3;
 	}
@@ -37,7 +36,6 @@ void	do_sa(t_stacks *stacks)
 		stacks->sa = tmp1;
 	}
 	print_move(stacks, "SA", "\033[32m");
-//	ft_putstr("SA");
 	stacks->nb_act++;
 }
 
@@ -50,10 +48,10 @@ void	do_sb(t_stacks *stacks)
 	if (stacks->nb_sb > 2)
 	{
 		tmp1 = stacks->sb;
-		tmp2 = stacks->sb->next;		// memorise 2e elem
+		tmp2 = stacks->sb->next;
 		tmp3 = stacks->sb->next->next;
-		stacks->sb->next = tmp2->next;	// 1er pointe vers le 3e
-		stacks->sb = tmp2;				// debut pointe vers le 2e
+		stacks->sb->next = tmp2->next;
+		stacks->sb = tmp2;
 		tmp2->next = tmp1;
 		tmp1->next = tmp3;
 	}
@@ -65,7 +63,6 @@ void	do_sb(t_stacks *stacks)
 		stacks->sb = tmp1;
 	}
 	print_move(stacks, "SB", "\033[32m");
-//	ft_putstr("SB");
 	stacks->nb_act++;
 }
 
