@@ -64,12 +64,13 @@ int		get_opt_assi(int argc, char **argv, t_opt *opt)
 	int		i;
 
 	i = 0;
-	opt->optstr = "acv";
+	opt->optstr = "ahcv";
 	opt->nb = 1;
 	while ((c = ft_get_opt(argc, argv, opt)) > 0)
 	{
 		if (c == '?')
 			illegal_option(opt);
+		i = (c == 'h') ? i | 1 : i;
 		i = (c == 'c') ? i | 2 : i;
 		i = (c == 'a') ? i | 4 : i;
 		i = (c == 'v') ? i | 8 : i;
@@ -84,6 +85,11 @@ int		main(int argc, char **argv)
 
 	if (argc > 1)
 		all.options = get_opt_assi(argc, argv, &opt);
+	if (all.options & 1)
+	{
+		ft_putstr("Push_swap Usage\n");
+		return (0);
+	}
 	if (argc == 1 || !error_handling(argv + opt.nb - 1))
 		return (0);
 	fill_stacks(&all, argv + opt.nb - 1, argc - opt.nb + 1);
