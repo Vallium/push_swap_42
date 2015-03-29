@@ -1,4 +1,4 @@
-push_swap_42
+push_swap
 ============
 [![Build Status](https://travis-ci.org/Vallium/push_swap_42.svg)](https://travis-ci.org/Vallium/push_swap_42)
 Man
