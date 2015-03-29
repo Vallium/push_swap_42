@@ -64,7 +64,7 @@ int		get_opt_assi(int argc, char **argv, t_opt *opt)
 	int		i;
 
 	i = 0;
-	opt->optstr = "ahcv";
+	opt->optstr = "achv";
 	opt->nb = 1;
 	while ((c = ft_get_opt(argc, argv, opt)) > 0)
 	{
@@ -78,6 +78,16 @@ int		get_opt_assi(int argc, char **argv, t_opt *opt)
 	return (i);
 }
 
+void	usage(void)
+{
+	ft_putstr_fd("usage: push_swap [-achv] [numbers ...]\n", 2);
+	ft_putstr_fd("	-a: print final details\n", 2);
+	ft_putstr_fd("	-c: set colors on\n", 2);
+	ft_putstr_fd("	-h: print help\n", 2);
+	ft_putstr_fd("	-v: verbose\n", 2);
+	exit(2);
+}
+
 int		main(int argc, char **argv)
 {
 	t_stacks	all;
@@ -86,10 +96,7 @@ int		main(int argc, char **argv)
 	if (argc > 1)
 		all.options = get_opt_assi(argc, argv, &opt);
 	if (all.options & 1)
-	{
-		ft_putstr("Push_swap Usage\n");
-		return (0);
-	}
+		usage();
 	if (argc == 1 || !error_handling(argv + opt.nb - 1))
 		return (0);
 	fill_stacks(&all, argv + opt.nb - 1, argc - opt.nb + 1);
