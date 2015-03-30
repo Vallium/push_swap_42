@@ -51,7 +51,7 @@ void	fill_stacks(t_stacks *st, char **argv, int argc)
 		nb = ft_atoi_err(argv[(st->nb_sa++) + 1], &err);
 		if (err)
 		{
-			ft_putstr("Error\n");
+			ft_putstr_fd("Error\n", 2);
 			exit(0);
 		}
 		ft_lstsmartpushback(&st->sa, ft_lstnew(&nb, sizeof(int)));
@@ -80,12 +80,12 @@ int		get_opt_assi(int argc, char **argv, t_opt *opt)
 
 void	usage(void)
 {
-	ft_putstr_fd("usage: push_swap [-achv] [numbers ...]\n", 2);
-	ft_putstr_fd("	-a: print final details\n", 2);
-	ft_putstr_fd("	-c: set colors on\n", 2);
-	ft_putstr_fd("	-h: print help\n", 2);
-	ft_putstr_fd("	-v: verbose\n", 2);
-	exit(2);
+	ft_putstr("usage: push_swap [-achv] [numbers ...]\n");
+	ft_putstr("	-a: print final details\n");
+	ft_putstr("	-c: set colors on\n");
+	ft_putstr("	-h: print help\n");
+	ft_putstr("	-v: verbose\n");
+	exit(0);
 }
 
 int		main(int argc, char **argv)

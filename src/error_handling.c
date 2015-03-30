@@ -43,7 +43,7 @@ void	check_dups(t_stacks st)
 	{
 		if (*ptr[i - 1] == *ptr[i])
 		{
-			ft_putstr("Error\n");
+			ft_putstr_fd("Error\n", 2);
 			exit(0);
 		}
 		i++;
@@ -88,14 +88,14 @@ int		error_handling(char **argv)
 		j = 1;
 		if (!ft_isdigit(argv[i][0]) && argv[i][0] != '-')
 		{
-			ft_putstr("Error\n");
+			ft_putstr_fd("Error\n", 2);
 			return (0);
 		}
 		while (argv[i][j])
 		{
 			if (!ft_isdigit(argv[i][j]))
 			{
-				ft_putstr("Error\n");
+				ft_putstr_fd("Error\n", 2);
 				return (0);
 			}
 			j++;
